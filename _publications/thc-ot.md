@@ -2,7 +2,7 @@
 title: "Towards Topology-Hiding Computation from Oblivious Transfer"
 authors: Marshall Ball, Alexander Bienstock, Lisa Kohl, and Pierre Meyer
 collection: publications
-category: conferences
+category: 2023
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2023-12-12

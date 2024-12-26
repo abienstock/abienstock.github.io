@@ -2,7 +2,7 @@
 title: "On the Price of Concurrency in Group Ratcheting Protocols"
 authors: "Alexander Bienstock, Yevgeniy Dodis, and Paul Rösler"
 collection: publications
-category: conferences
+category: 2020
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2020-06-26

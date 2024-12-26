@@ -2,7 +2,7 @@
 title: "Honest Majority GOD MPC with O(depth(C)) Rounds and O(n&#124;C&#124;) Online Communication"
 authors: Amit Agarwal, Alexander Bienstock, Ivan Damgård, and Daniel Escudero
 collection: publications
-category: conferences
+category: 2024
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2024-12-12

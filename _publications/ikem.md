@@ -2,7 +2,7 @@
 title: "Interval Key-Encapsulation Mechanism"
 authors: Alexander Bienstock, Yevgeniy Dodis, Paul Rösler, and Daniel Wichs
 collection: publications
-category: conferences
+category: 2024
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2024-12-12

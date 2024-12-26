@@ -1,13 +1,14 @@
 ---
 title: "Near-Optimal Oblivious Key-Value Stores for Efficient PSI, PSU and Volume-Hiding Multi-Maps"
-authors: Alexander Bienstock, Sarvar Patel, Joon Young Seo, and Kevin Yeo
-collection: publications
+#authors: Alexander Bienstock and Kevin Yeo
+collection: talks
 category: 2023
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
-date: 2023-06-01
-venue: "USENIX Security 2023"
+date: 2023-10-31
+#venue: "Submitted"
 slidesurl: #'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'https://eprint.iacr.org/2023/903.pdf'
+#paperurl: 'https://eprint.iacr.org/2024/503.pdf'
+location: 'NYU Crypto Reading Group'
 citation: #'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---

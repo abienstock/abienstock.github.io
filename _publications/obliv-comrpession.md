@@ -2,7 +2,7 @@
 title: "Batch PIR and Labeled PSI with Oblivious Ciphertext Compression"
 authors: Alexander Bienstock, Sarvar Patel, Joon Young Seo, and Kevin Yeo
 collection: publications
-category: conferences
+category: 2024
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2023-12-25

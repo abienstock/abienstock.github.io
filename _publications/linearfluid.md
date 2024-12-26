@@ -2,7 +2,7 @@
 title: "On Linear Communication Complexity for (Maximally) Fluid MPC"
 authors: Alexander Bienstock, Daniel Escudero, and Antigoni Polychroniadou
 collection: publications
-category: conferences
+category: 2023
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2023-05-24
