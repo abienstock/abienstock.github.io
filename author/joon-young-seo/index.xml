@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Joon Young Seo | Alexander Bienstock</title>
+    <link>https://cs.nyu.edu/~afb383/author/joon-young-seo/</link>
+      <atom:link href="https://cs.nyu.edu/~afb383/author/joon-young-seo/index.xml" rel="self" type="application/rss+xml" />
+    <description>Joon Young Seo</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Aug 2023 15:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg</url>
+      <title>Joon Young Seo</title>
+      <link>https://cs.nyu.edu/~afb383/author/joon-young-seo/</link>
+    </image>
+    
+    <item>
+      <title>Batch PIR and Labeled PSI with Oblivious Ciphertext Compression</title>
+      <link>https://cs.nyu.edu/~afb383/publication/obliv-compression/</link>
+      <pubDate>Sun, 13 Aug 2023 15:00:00 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/obliv-compression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Near-Optimal Oblivious Key-Value Stores for Efficient PSI, PSU and Volume-Hiding Multi-Maps</title>
+      <link>https://cs.nyu.edu/~afb383/publication/okvs/</link>
+      <pubDate>Thu, 01 Jun 2023 11:04:24 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/okvs/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

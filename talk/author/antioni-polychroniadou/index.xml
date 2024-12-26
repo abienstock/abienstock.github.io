@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Antioni Polychroniadou | Alexander Bienstock</title>
+    <link>https://cs.nyu.edu/~afb383/author/antioni-polychroniadou/</link>
+      <atom:link href="https://cs.nyu.edu/~afb383/author/antioni-polychroniadou/index.xml" rel="self" type="application/rss+xml" />
+    <description>Antioni Polychroniadou</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 24 May 2023 09:59:51 -0400</lastBuildDate>
+    <image>
+      <url>https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg</url>
+      <title>Antioni Polychroniadou</title>
+      <link>https://cs.nyu.edu/~afb383/author/antioni-polychroniadou/</link>
+    </image>
+    
+    <item>
+      <title>On Linear Communication Complexity for (Maximally) Fluid MPC</title>
+      <link>https://cs.nyu.edu/~afb383/publication/linearfluid/</link>
+      <pubDate>Wed, 24 May 2023 09:59:51 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/linearfluid/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

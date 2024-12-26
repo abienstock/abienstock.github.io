@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Antigoni Polychroniadou | Alexander Bienstock</title>
+    <link>https://cs.nyu.edu/~afb383/author/antigoni-polychroniadou/</link>
+      <atom:link href="https://cs.nyu.edu/~afb383/author/antigoni-polychroniadou/index.xml" rel="self" type="application/rss+xml" />
+    <description>Antigoni Polychroniadou</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 13 Aug 2023 15:00:54 -0400</lastBuildDate>
+    <image>
+      <url>https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg</url>
+      <title>Antigoni Polychroniadou</title>
+      <link>https://cs.nyu.edu/~afb383/author/antigoni-polychroniadou/</link>
+    </image>
+    
+    <item>
+      <title>Perfectly Secure Fluid MPC with Abort and Linear Communication Complexity</title>
+      <link>https://cs.nyu.edu/~afb383/publication/perfectfluid/</link>
+      <pubDate>Sun, 13 Aug 2023 15:00:54 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/perfectfluid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On Linear Communication Complexity for (Maximally) Fluid MPC</title>
+      <link>https://cs.nyu.edu/~afb383/publication/linearfluid/</link>
+      <pubDate>Wed, 24 May 2023 09:59:51 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/linearfluid/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Allison Bishop | Alexander Bienstock</title>
+    <link>https://cs.nyu.edu/~afb383/author/allison-bishop/</link>
+      <atom:link href="https://cs.nyu.edu/~afb383/author/allison-bishop/index.xml" rel="self" type="application/rss+xml" />
+    <description>Allison Bishop</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 11 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg</url>
+      <title>Allison Bishop</title>
+      <link>https://cs.nyu.edu/~afb383/author/allison-bishop/</link>
+    </image>
+    
+    <item>
+      <title>From discrete-log to lattices: maybe the real lessons were our broken schemes along the way?</title>
+      <link>https://cs.nyu.edu/~afb383/publication/dlog2lattices/</link>
+      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/dlog2lattices/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

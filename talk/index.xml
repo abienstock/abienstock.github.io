@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alexander Bienstock</title>
+    <link>https://cs.nyu.edu/~afb383/</link>
+      <atom:link href="https://cs.nyu.edu/~afb383/index.xml" rel="self" type="application/rss+xml" />
+    <description>Alexander Bienstock</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Feb 2024 15:01:14 -0400</lastBuildDate>
+    <image>
+      <url>https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg</url>
+      <title>Alexander Bienstock</title>
+      <link>https://cs.nyu.edu/~afb383/</link>
+    </image>
+    
+    <item>
+      <title>Two Levels are Better than One: Dishonest Majority MPC with ~O(|C|) Total Communication</title>
+      <link>https://cs.nyu.edu/~afb383/publication/const-dm/</link>
+      <pubDate>Thu, 01 Feb 2024 15:01:14 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/const-dm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Honest Majority GOD MPC with O(depth(C)) Rounds and O(n|C|) Online Communication</title>
+      <link>https://cs.nyu.edu/~afb383/publication/hm-god-mpc/</link>
+      <pubDate>Sun, 13 Aug 2023 15:01:14 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/hm-god-mpc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Perfectly Secure Fluid MPC with Abort and Linear Communication Complexity</title>
+      <link>https://cs.nyu.edu/~afb383/publication/perfectfluid/</link>
+      <pubDate>Sun, 13 Aug 2023 15:00:54 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/perfectfluid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Batch PIR and Labeled PSI with Oblivious Ciphertext Compression</title>
+      <link>https://cs.nyu.edu/~afb383/publication/obliv-compression/</link>
+      <pubDate>Sun, 13 Aug 2023 15:00:00 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/obliv-compression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Towards Topology-Hiding Computation from Oblivious Transfer</title>
+      <link>https://cs.nyu.edu/~afb383/publication/thc-ot/</link>
+      <pubDate>Sun, 25 Jun 2023 15:00:00 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/thc-ot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Near-Optimal Oblivious Key-Value Stores for Efficient PSI, PSU and Volume-Hiding Multi-Maps</title>
+      <link>https://cs.nyu.edu/~afb383/publication/okvs/</link>
+      <pubDate>Thu, 01 Jun 2023 11:04:24 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/okvs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On Linear Communication Complexity for (Maximally) Fluid MPC</title>
+      <link>https://cs.nyu.edu/~afb383/publication/linearfluid/</link>
+      <pubDate>Wed, 24 May 2023 09:59:51 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/linearfluid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ASMesh: Secure Messaging in Mesh Networks Using Stronger, Anonymous Double Ratchet</title>
+      <link>https://cs.nyu.edu/~afb383/publication/meshmsg/</link>
+      <pubDate>Fri, 17 Mar 2023 12:14:54 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/meshmsg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On the Worst-Case Inefficiency of CGKA</title>
+      <link>https://cs.nyu.edu/~afb383/publication/cgka_dynamic_lb/</link>
+      <pubDate>Fri, 01 Oct 2021 12:15:10 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/cgka_dynamic_lb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A More Complete Analysis of the Signal Double Ratchet Algorithm</title>
+      <link>https://cs.nyu.edu/~afb383/publication/uc_signal/</link>
+      <pubDate>Fri, 01 Oct 2021 12:14:54 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/uc_signal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fundamental Algorithms</title>
+      <link>https://cs.nyu.edu/~afb383/talk/fund-algs/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/talk/fund-algs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Basic Algorithms</title>
+      <link>https://cs.nyu.edu/~afb383/talk/basic-algs/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/talk/basic-algs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multicast Key Agreement, Revisited</title>
+      <link>https://cs.nyu.edu/~afb383/publication/mka/</link>
+      <pubDate>Thu, 03 Dec 2020 11:00:30 -0500</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/mka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Forward Secret Encrypted RAM: Lower Bounds and Applications</title>
+      <link>https://cs.nyu.edu/~afb383/publication/fs-eram/</link>
+      <pubDate>Mon, 12 Oct 2020 10:24:09 -0400</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/fs-eram/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On the Price of Concurrency in Group Ratcheting Protocols</title>
+      <link>https://cs.nyu.edu/~afb383/publication/grlb/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/grlb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>From discrete-log to lattices: maybe the real lessons were our broken schemes along the way?</title>
+      <link>https://cs.nyu.edu/~afb383/publication/dlog2lattices/</link>
+      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/publication/dlog2lattices/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computer Science Theory</title>
+      <link>https://cs.nyu.edu/~afb383/talk/cstheory/</link>
+      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/talk/cstheory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Malware Analysis &amp; Reverse Engineering</title>
+      <link>https://cs.nyu.edu/~afb383/talk/malware/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/talk/malware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computing in Context</title>
+      <link>https://cs.nyu.edu/~afb383/talk/cic/</link>
+      <pubDate>Wed, 07 Sep 2016 00:00:00 +0000</pubDate>
+      <guid>https://cs.nyu.edu/~afb383/talk/cic/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

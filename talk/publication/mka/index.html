@@ -1,0 +1,1053 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Secure Group Messaging (SGM) protocols allow groups of users to asynchronously and securely communicate with each other. They have received significant attention recently, including in an effort by the IETF Messaging Layer Security (MLS) working group to standardize an eponymous protocol. In SGM protocols, users share group secrets across time to enable communications and are allowed to asynchronously perform group additions and removals. Moreover, they provide robust security guarantees regarding user state exposures: forward secrecy (FS) and post-compromise security (PCS). The former ensures that group secrets prior to state compromise remain secure, while the latter ensures that the users can recover from state compromise using normal protocol operations. However, the group key agreement primitive at the core of SGM protocols, Continuous Group Key Agreement (CGKA), which is achieved by the TreeKEM protocol in MLS, suffers from bad worst case efficiency and requires strong assumptions, due to asynchronous user operations.
+
+ We propose that in the common case of a group membership change policy which allows a single administrator to perform all group additions and removals, classical Multicast Key Agreement (MKA) may serve as a more efficient substitute for CGKA in SGM. In MKA protocols, an omniscient group manager performs all group operations, which increases efficiency and reduces assumptions. However, existing MKA schemes in the literature do not provide formal security analyses nor efficiency analyses regarding dynamically changing groups, and also lack FS and PCS.
+
+ We first present rigorous security definitions for MKA which provide increasing levels of security in the case of state exposure of both users and the group manager. We then construct an efficient and formally secure MKA protocol with dynamic groups. Finally, we provide a toy implementation of our protocol, and run experiments which show that the left-balanced binary tree structure used in TreeKEM can be substituted with red-black trees in MKA for better efficiency.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://cs.nyu.edu/~afb383/publication/mka/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/~afb383/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/~afb383/index.webmanifest">
+  <link rel="icon" type="image/png" href="/~afb383/images/icon_hufa8045b28452e0d1638d374ab0226684_295_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/~afb383/images/icon_hufa8045b28452e0d1638d374ab0226684_295_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="https://cs.nyu.edu/~afb383/publication/mka/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Alexander Bienstock">
+  <meta property="og:url" content="https://cs.nyu.edu/~afb383/publication/mka/">
+  <meta property="og:title" content="Multicast Key Agreement, Revisited | Alexander Bienstock">
+  <meta property="og:description" content="Secure Group Messaging (SGM) protocols allow groups of users to asynchronously and securely communicate with each other. They have received significant attention recently, including in an effort by the IETF Messaging Layer Security (MLS) working group to standardize an eponymous protocol. In SGM protocols, users share group secrets across time to enable communications and are allowed to asynchronously perform group additions and removals. Moreover, they provide robust security guarantees regarding user state exposures: forward secrecy (FS) and post-compromise security (PCS). The former ensures that group secrets prior to state compromise remain secure, while the latter ensures that the users can recover from state compromise using normal protocol operations. However, the group key agreement primitive at the core of SGM protocols, Continuous Group Key Agreement (CGKA), which is achieved by the TreeKEM protocol in MLS, suffers from bad worst case efficiency and requires strong assumptions, due to asynchronous user operations.
+
+ We propose that in the common case of a group membership change policy which allows a single administrator to perform all group additions and removals, classical Multicast Key Agreement (MKA) may serve as a more efficient substitute for CGKA in SGM. In MKA protocols, an omniscient group manager performs all group operations, which increases efficiency and reduces assumptions. However, existing MKA schemes in the literature do not provide formal security analyses nor efficiency analyses regarding dynamically changing groups, and also lack FS and PCS.
+
+ We first present rigorous security definitions for MKA which provide increasing levels of security in the case of state exposure of both users and the group manager. We then construct an efficient and formally secure MKA protocol with dynamic groups. Finally, we provide a toy implementation of our protocol, and run experiments which show that the left-balanced binary tree structure used in TreeKEM can be substituted with red-black trees in MKA for better efficiency."><meta property="og:image" content="https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg">
+  <meta property="twitter:image" content="https://cs.nyu.edu/~afb383/img/IMG_4472.jpeg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-12-03T11:00:30-05:00">
+    
+    <meta property="article:modified_time" content="2020-12-03T11:00:30-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cs.nyu.edu/~afb383/publication/mka/"
+  },
+  "headline": "Multicast Key Agreement, Revisited",
+  
+  "datePublished": "2020-12-03T11:00:30-05:00",
+  "dateModified": "2020-12-03T11:00:30-05:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Alexander Bienstock"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Alexander Bienstock",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cs.nyu.edu/~afb383/images/icon_hufa8045b28452e0d1638d374ab0226684_295_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Secure Group Messaging (SGM) protocols allow groups of users to asynchronously and securely communicate with each other. They have received significant attention recently, including in an effort by the IETF Messaging Layer Security (MLS) working group to standardize an eponymous protocol. In SGM protocols, users share group secrets across time to enable communications and are allowed to asynchronously perform group additions and removals. Moreover, they provide robust security guarantees regarding user state exposures: forward secrecy (FS) and post-compromise security (PCS). The former ensures that group secrets prior to state compromise remain secure, while the latter ensures that the users can recover from state compromise using normal protocol operations. However, the group key agreement primitive at the core of SGM protocols, Continuous Group Key Agreement (CGKA), which is achieved by the TreeKEM protocol in MLS, suffers from bad worst case efficiency and requires strong assumptions, due to asynchronous user operations.\n\n We propose that in the common case of a group membership change policy which allows a single administrator to perform all group additions and removals, classical Multicast Key Agreement (MKA) may serve as a more efficient substitute for CGKA in SGM. In MKA protocols, an omniscient group manager performs all group operations, which increases efficiency and reduces assumptions. However, existing MKA schemes in the literature do not provide formal security analyses nor efficiency analyses regarding dynamically changing groups, and also lack FS and PCS.\n\n We first present rigorous security definitions for MKA which provide increasing levels of security in the case of state exposure of both users and the group manager. We then construct an efficient and formally secure MKA protocol with dynamic groups. Finally, we provide a toy implementation of our protocol, and run experiments which show that the left-balanced binary tree structure used in TreeKEM can be substituted with red-black trees in MKA for better efficiency."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Multicast Key Agreement, Revisited | Alexander Bienstock</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Alexander Bienstock</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Alexander Bienstock</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/~afb383/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/~afb383/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/~afb383/#talks"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/~afb383/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Multicast Key Agreement, Revisited</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span>Alexander Bienstock</span>, <span>Yevgeniy Dodis</span>, <span>Yi Tang</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    December 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+<a class="btn btn-outline-primary my-1 mr-1" href="https://eprint.iacr.org/2021/1570.pdf" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/abienstock/Multicast-Key-Agreement" target="_blank" rel="noopener">
+  Code
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="https://ct-rsa-2022.auckland.ac.nz/" target="_blank" rel="noopener">
+    
+    CT-RSA 2022
+  </a>
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract"><p>Secure Group Messaging (SGM) protocols allow groups of users to asynchronously and securely communicate with each other. They have received significant attention recently, including in an effort by the IETF Messaging Layer Security (MLS) working group to standardize an eponymous protocol. In SGM protocols, users share group secrets across time to enable communications and are allowed to asynchronously perform group additions and removals. Moreover, they provide robust security guarantees regarding user state exposures: forward secrecy (FS) and post-compromise security (PCS). The former ensures that group secrets prior to state compromise remain secure, while the latter ensures that the users can recover from state compromise using normal protocol operations. However, the group key agreement primitive at the core of SGM protocols, Continuous Group Key Agreement (CGKA), which is achieved by the TreeKEM protocol in MLS, suffers from bad worst case efficiency and requires strong assumptions, due to asynchronous user operations.</p>
+<p>We propose that in the common case of a group membership change policy which allows a single administrator to perform all group additions and removals, classical Multicast Key Agreement (MKA) may serve as a more efficient substitute for CGKA in SGM. In MKA protocols, an omniscient group manager performs all group operations, which increases efficiency and reduces assumptions. However, existing MKA schemes in the literature do not provide formal security analyses nor efficiency analyses regarding dynamically changing groups, and also lack FS and PCS.</p>
+<p>We first present rigorous security definitions for MKA which provide increasing levels of security in the case of state exposure of both users and the group manager. We then construct an efficient and formally secure MKA protocol with dynamic groups. Finally, we provide a toy implementation of our protocol, and run experiments which show that the left-balanced binary tree structure used in TreeKEM can be substituted with red-black trees in MKA for better efficiency.</p>
+</p>
+    
+
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Type</div>
+          <div class="col-12 col-md-9">
+            
+            
+            <a href="/~afb383/publication/#1">
+              Conference paper
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
+          <div class="col-12 col-md-9">The Cryptographer&rsquo;s Track at the RSA Conference</div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"></div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://cs.nyu.edu/~afb383/publication/mka/&amp;text=Multicast%20Key%20Agreement,%20Revisited" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://cs.nyu.edu/~afb383/publication/mka/&amp;t=Multicast%20Key%20Agreement,%20Revisited" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Multicast%20Key%20Agreement,%20Revisited&amp;body=https://cs.nyu.edu/~afb383/publication/mka/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://cs.nyu.edu/~afb383/publication/mka/&amp;title=Multicast%20Key%20Agreement,%20Revisited" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Multicast%20Key%20Agreement,%20Revisited%20https://cs.nyu.edu/~afb383/publication/mka/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://cs.nyu.edu/~afb383/publication/mka/&amp;title=Multicast%20Key%20Agreement,%20Revisited" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+
+
+  
+    
+    
+
+
+
+
+
+  
+
+
+  
+    
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/~afb383/publication/meshmsg/">ASMesh: Secure Messaging in Mesh Networks Using Stronger, Anonymous Double Ratchet</a></li>
+      
+      <li><a href="/~afb383/publication/cgka_dynamic_lb/">On the Worst-Case Inefficiency of CGKA</a></li>
+      
+      <li><a href="/~afb383/publication/fs-eram/">Forward Secret Encrypted RAM: Lower Bounds and Applications</a></li>
+      
+      <li><a href="/~afb383/publication/grlb/">On the Price of Concurrency in Group Ratcheting Protocols</a></li>
+      
+      <li><a href="/~afb383/publication/const-dm/">Two Levels are Better than One: Dishonest Majority MPC with ~O(|C|) Total Communication</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWv6PmXp0F-wowMZK-_OIMmmcl0vjBDLQ"></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha256-7vjlAeb8OaTrCXZkCNun9djzuB2owUsaO72kXaFDBJs=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/~afb383/js/academic.min.8741d44cdc5fc49466a5835d1bbea364.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
