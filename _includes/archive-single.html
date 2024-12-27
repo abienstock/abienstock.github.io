@@ -30,7 +30,7 @@
       {% if post.paperurl %}
         <a href="{{ post.paperurl }}">{{ title }}</a> <!--<a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>-->
       {% else %}
-        <a href="{{ base_path }}" rel="permalink">{{ title }}</a>
+        <strong>{{ title }}</strong>
       {% endif %}
     <!--</h3>-->
 
@@ -43,7 +43,7 @@
     {% endif %}
 
         {% if post.collection == 'teaching' %}
-          <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {{post.role}}<p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i>{{post.location}}, {{post.sem}}</p>
         {% elsif post.collection == 'publications' %}
           <br><strong>{{ post.venue }}</strong><!--, {{ post.date | default: "1900-01-01" | date: "%Y" }}-->{% if post.workshops %}; also presented at {{ post.workshops }} {% endif %}
         {% elsif post.date %}
