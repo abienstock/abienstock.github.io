@@ -1,11 +1,11 @@
 ---
-title: "DMM: Distributed Matrix Mechanism for Differentially-Private Federated Learning using Packed Secret Sharing"
+title: "DMM: Distributed Matrix Mechanism for Differentially-Private Federated Learning Based on Constant-Overhead Linear Secret Resharing"
 authors: Alexander Bienstock, Ujjwal Kumar, and Antigoni Polychroniadou
 collection: publications
 category: 2024
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
-date: 2024-12-23
+date: 2024-12-25
 venue: "Submitted"
 workshops: "Crypto PPML 2024, NeurIPS FL@FM 2024, and NeurIPS AIM-FM 2024"
 slidesurl: #'http://academicpages.github.io/files/slides1.pdf'

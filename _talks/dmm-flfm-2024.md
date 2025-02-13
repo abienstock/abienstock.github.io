@@ -1,5 +1,5 @@
 ---
-title: "DMM: Distributed Matrix Mechanism for Differentially-Private Federated Learning using Packed Secret Sharing"
+title: "DMM: Distributed Matrix Mechanism for Differentially-Private Federated Learning Based on Constant-Overhead Linear Secret Resharing"
 #authors: Alexander Bienstock and Kevin Yeo
 collection: talks
 category: 2024
