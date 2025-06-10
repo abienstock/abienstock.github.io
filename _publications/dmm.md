@@ -6,7 +6,7 @@ category: 2025
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
 date: 2025-1-25
-venue: "Submitted"
+venue: "ICML 2025"
 workshops: "Crypto PPML 2024, NeurIPS FL@FM 2024, and NeurIPS AIM-FM 2024"
 slidesurl: #'http://academicpages.github.io/files/slides1.pdf'
 paperurl: 'https://eprint.iacr.org/2024/1665.pdf'
