@@ -11,4 +11,5 @@ I am a Senior Research Scientist at [J.P. Morgan AI Research](https://www.jpmorg
 I was fortunate enough to be supported by an NSF Graduate Research Fellowship and a Google PhD Fellowship while at NYU.
 Before that, I received my B.S. in Computer Science from [Columbia University](https://www.columbia.edu/) in 2019, where I worked with [Professor Allison Bishop](https://www.thecomputersciencecomedian.com/).
 
-I am interested in applied cryptography, particularly Secure Multi-Party Computation (MPC). My current research focuses on the intersection of MPC, Privacy, and Artificial Intelligence. I have also studied Secure (Group) Messaging, Private Set Intersection, and Private Outsourced Storage protocols in the past.
+I am interested in AI and privacy, specifically Differential Privacy, Federated Learning, and Secure Aggregation. I also study Secure Multi-Party Computation and other related cryptographic topics like Private Set Intersection and Private Outsourced Storage protocols.
+<!--- I am interested in applied cryptography, particularly Secure Multi-Party Computation (MPC). My current research focuses on the intersection of MPC, Privacy, and Artificial Intelligence. I have also studied Secure (Group) Messaging, Private Set Intersection, and Private Outsourced Storage protocols in the past.--->
