@@ -1,12 +1,12 @@
 ---
-title: "Efficient, Scalable Threshold ML-DSA Signatures: An MPC Approach"
+title: "Quorus: Efficient, Scalable Threshold ML-DSA Signatures from MPC"
 authors: Alexander Bienstock, Leo de Castro, Daniel Escudero, Antigoni Polychroniadou, and Akira Takahashi
 collection: publications
-category: 2025
+category: 2026
 #permalink: 
 excerpt: #'This paper is about the number 1. The number 2 is left for future work.'
-date: 2025-08-20
-venue: "Submitted"
+date: 2026-01-20
+venue: "USENIX Security 2026"
 workshops: #"Crypto PPML 2024, NeurIPS FL@FM 2024, and NeurIPS AIM-FM 2024"
 slidesurl: #'http://academicpages.github.io/files/slides1.pdf'
 paperurl: 'https://eprint.iacr.org/2025/1163.pdf'
