@@ -77,17 +77,21 @@
    ========================================================================== */
 
 .author__avatar {
-  display: block;
-  width: auto;
-  height: auto;
-  margin-bottom: 10px;
+  display: table-cell;
+  vertical-align: top;
+  width: 80px;
+
+  @include breakpoint($large) {
+    display: block;
+    width: auto;
+    height: auto;
+  }
 
   img {
-    max-width: 120px;
+    max-width: 175px;
     border-radius: 50%;
 
     @include breakpoint($large) {
-      max-width: 175px;
       padding: 5px;
       border: 1px solid $border-color;
     }
@@ -95,11 +99,18 @@
 }
 
 .author__content {
-  display: block;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 15px;
+  padding-right: 25px;
   line-height: 1;
+
+  @include breakpoint($large) {
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .author__name {
@@ -142,7 +153,8 @@
 
 .author__urls-wrapper {
   position: relative;
-  display: block;
+  display: table-cell;
+  vertical-align: middle;
   font-family: $sans-serif;
   z-index: 10;
 
@@ -152,13 +164,19 @@
     }
   }
 
+  @include breakpoint($large) {
+    display: block;
+  }
+
   button {
     display: none;
   }
 }
 
 .author__urls {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   position: relative;
   margin: 0;
   padding: 0;
@@ -169,6 +187,18 @@
   box-shadow: none;
   cursor: default;
 
+  // Mobile: icons only
+  li {
+    a {
+      font-size: 0; // Hide text
+      i {
+        font-size: $type-size-4;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
   @include breakpoint($large) {
     display: block;
     position: relative;
@@ -177,6 +207,16 @@
     border: 0;
     background: transparent;
     box-shadow: none;
+
+    // Desktop: show text
+    li {
+      a {
+        font-size: $type-size-5;
+        i {
+          font-size: inherit;
+        }
+      }
+    }
   }
 
   &:before {
