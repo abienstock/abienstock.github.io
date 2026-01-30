@@ -176,7 +176,8 @@
 .author__urls {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 4px;
   position: relative;
   margin: 0;
   padding: 0;
@@ -224,21 +225,21 @@
   // Mobile: hide link text, show only icons
   @media screen and (max-width: 1023px) {
     li {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
     }
     a {
       display: inline-block;
       font-size: 1.25rem;
-    }
-    // Hide the text after the icon
-    a > i {
-      color: #494e52;
-    }
-    // Hide text that follows icon
-    a {
       width: 1.5rem;
       overflow: hidden;
       white-space: nowrap;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    a > i {
+      color: #494e52;
     }
   }
 }
