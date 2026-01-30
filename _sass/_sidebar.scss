@@ -243,22 +243,31 @@
     padding-bottom: 2px;
     color: inherit;
     text-decoration: none;
-
-    // Mobile: icon only
-    font-size: 0;
-    i {
-      font-size: $type-size-4;
-    }
-
-    @include breakpoint($large) {
-      font-size: $type-size-5;
-      i {
-        font-size: inherit;
-      }
-    }
+    font-size: $type-size-5;
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  // Mobile: hide link text, show only icons
+  @media screen and (max-width: 1023px) {
+    li {
+      display: inline-block;
+    }
+    a {
+      display: inline-block;
+      font-size: 1.25rem;
+    }
+    // Hide the text after the icon
+    a > i {
+      color: #494e52;
+    }
+    // Hide text that follows icon
+    a {
+      width: 1.5rem;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }
