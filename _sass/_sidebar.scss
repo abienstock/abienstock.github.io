@@ -187,18 +187,6 @@
   box-shadow: none;
   cursor: default;
 
-  // Mobile: icons only
-  li {
-    a {
-      font-size: 0; // Hide text
-      i {
-        font-size: $type-size-4;
-        margin: 0;
-        padding: 0;
-      }
-    }
-  }
-
   @include breakpoint($large) {
     display: block;
     position: relative;
@@ -207,16 +195,6 @@
     border: 0;
     background: transparent;
     box-shadow: none;
-
-    // Desktop: show text
-    li {
-      a {
-        font-size: $type-size-5;
-        i {
-          font-size: inherit;
-        }
-      }
-    }
   }
 
   &:before {
@@ -264,8 +242,20 @@
     padding-top: 2px;
     padding-bottom: 2px;
     color: inherit;
-    font-size: $type-size-5;
     text-decoration: none;
+
+    // Mobile: icon only
+    font-size: 0;
+    i {
+      font-size: $type-size-4;
+    }
+
+    @include breakpoint($large) {
+      font-size: $type-size-5;
+      i {
+        font-size: inherit;
+      }
+    }
 
     &:hover {
       text-decoration: underline;
