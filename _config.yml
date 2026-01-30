@@ -24,7 +24,7 @@ author:
   avatar           : "profile.jpeg"
   name             : "Alexander Bienstock"
   pronouns         : # example: "she/her"  
-  bio              : "Senior Research Scientist at J.P. Morgan AI Research & AlgoCRYPT CoE"# researching Cryptography, Privacy, and Artificial Intelligence"
+  bio              : "Senior Research Scientist at J.P. Morgan AI Research" #& AlgoCRYPT CoE" researching Cryptography, Privacy, and Artificial Intelligence"
   location         : "New York, NY"
   employer         : "J.P. Morgan"
   uri              : # URL
