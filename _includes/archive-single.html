@@ -45,7 +45,7 @@
         {% if post.collection == 'teaching' %}
         {{post.role}}<p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i>{{post.location}}, {{post.sem}}</p>
         {% elsif post.collection == 'publications' %}
-          <br><strong>{{ post.venue }}</strong><!--, {{ post.date | default: "1900-01-01" | date: "%Y" }}-->{% if post.workshops %}; also presented at {{ post.workshops }} {% endif %}
+          <br><strong>{{ post.venue }}</strong>{% if post.spotlight %} <strong style="color:red;">Spotlight</strong>{% endif %}<!--, {{ post.date | default: "1900-01-01" | date: "%Y" }}-->{% if post.workshops %}; also presented at {{ post.workshops }} {% endif %}
         {% elsif post.date %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
