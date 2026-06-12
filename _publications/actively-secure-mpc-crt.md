@@ -1,5 +1,5 @@
 ---
-title: "Actively Secure MPC with O(|C|) Computation and Communication via CRT"
+title: "Actively Secure MPC with O(&#124;C&#124;) Computation and Communication via CRT"
 authors: Alexander Bienstock, Daniel Escudero, and Antigoni Polychroniadou
 collection: publications
 category: 2026
