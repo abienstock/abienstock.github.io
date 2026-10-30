@@ -19,6 +19,19 @@ author_profile: true
       {% if post.category != category[0] %}
         {% continue %}
       {% endif %}
+      {% if post.venue != "Submitted" %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h2>{{ category[1].title }}</h2><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+    {% for post in site.publications %}
+      {% if post.category != category[0] or post.venue == "Submitted" %}
+        {% continue %}
+      {% endif %}
       {% unless title_shown %}
         <h2>{{ category[1].title }}</h2><hr />
         {% assign title_shown = true %}
@@ -31,5 +44,4 @@ author_profile: true
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}
-
 
